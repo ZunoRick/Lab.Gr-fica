@@ -1,14 +1,13 @@
-//Semestre 2017 - 2
+//Semestre 2019 - 2
 //************************************************************//
 //************************************************************//
 //************** Alumno (s): *********************************//
-//*************											******//
-//*************											******//
+//*************	Zuno S√°nchez Ricardo					******//
+//*************	Pr√°ctica #3								******//
+//*************	Visual Studio 2017						******//
+//*************	Instrucciones: Con la tecla Q se mueven las letras hacia arriba******//
+//*************	La letra E mueve las letras hacia abajo						******//
 //************************************************************//
-
-//#include <gl/gl.h>     // The GL Header File
-//#include <GL/glut.h>   // The GL Utility Toolkit (Glut) Header
-//#include <stdlib.h>
 #include "Main.h"
 
 float angleX = 0.0f;
@@ -34,14 +33,14 @@ void InitGL ( GLvoid )     // Inicializamos parametros
 void prisma(float r, float g, float b)
 {
 	GLfloat vertice [8][3] = {
-				{0.5 ,-0.5, 0.5},    //Coordenadas VÈrtice 0 V0
-				{-0.5 ,-0.5, 0.5},    //Coordenadas VÈrtice 1 V1
-				{-0.5 ,-0.5, -0.5},    //Coordenadas VÈrtice 2 V2
-				{0.5 ,-0.5, -0.5},    //Coordenadas VÈrtice 3 V3
-				{0.5 ,0.5, 0.5},    //Coordenadas VÈrtice 4 V4
-				{0.5 ,0.5, -0.5},    //Coordenadas VÈrtice 5 V5
-				{-0.5 ,0.5, -0.5},    //Coordenadas VÈrtice 6 V6
-				{-0.5 ,0.5, 0.5},    //Coordenadas VÈrtice 7 V7
+				{0.5 ,-0.5, 0.5},    //Coordenadas V√©rtice 0 V0
+				{-0.5 ,-0.5, 0.5},    //Coordenadas V√©rtice 1 V1
+				{-0.5 ,-0.5, -0.5},    //Coordenadas V√©rtice 2 V2
+				{0.5 ,-0.5, -0.5},    //Coordenadas V√©rtice 3 V3
+				{0.5 ,0.5, 0.5},    //Coordenadas V√©rtice 4 V4
+				{0.5 ,0.5, -0.5},    //Coordenadas V√©rtice 5 V5
+				{-0.5 ,0.5, -0.5},    //Coordenadas V√©rtice 6 V6
+				{-0.5 ,0.5, 0.5},    //Coordenadas V√©rtice 7 V7
 				};
 
 		glBegin(GL_POLYGON);	//Front
@@ -100,7 +99,7 @@ void display ( void )   // Creamos la funcion donde se dibuja
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-		//Poner CÛdigo AquÌ
+		//Poner C√≥digo Aqu√≠
 	//Letra C
 	glTranslatef(transX, transY, transZ);
 	glTranslatef(-4.0f, 0.0f, 0.0f);
@@ -121,27 +120,27 @@ void display ( void )   // Creamos la funcion donde se dibuja
   	
 	//Letra G
 	glTranslatef(2.0f, 0.0f, 0.0f);
-	prisma(0.0, 1.0, 0.0);
+	prisma(0.0, 0.0, 1.0);
 	for (i = 0; i < 4; i++) {
 		glTranslatef(0.0f, 1.0f, 0.0f);
-		prisma(0.0, 1.0, 0.0);
+		prisma(0.0, 0.0, 1.0);
 	}
 	for (i = 0; i < 3; i++) {
 		glTranslatef(1.0f, 0.0f, 0.0f);
-		prisma(0.0, 1.0, 0.0);
+		prisma(0.0, 0.0, 1.0);
 	}
 	glTranslatef(-3.0f, -4.0f, 0.0f);
 	for (i = 0; i < 3; i++) {
 		glTranslatef(1.0f, 0.0f, 0.0f);
-		prisma(0.0, 1.0, 0.0);
+		prisma(0.0, 0.0, 1.0);
 	}
 
 	for (i = 0; i < 2; i++) {
 		glTranslatef(0.0f, 1.0f, 0.0f);
-		prisma(0.0, 1.0, 0.0);
+		prisma(0.0, 0.0, 1.0);
 	}
 	glTranslatef(-1.0f, 0.0f, 0.0f);
-	prisma(0.0, 1.0, 0.0);
+	prisma(0.0, 0.0, 1.0);
 
 	//Letra R
 	glTranslatef(3.0f, -2.0f, 0.0f);
@@ -159,6 +158,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 		prisma(0.0, 1.0, 0.0);
 	}
 	glTranslatef(-1.0f, 0.0f, 0.0f);
+	prisma(0.0, 1.0, 0.0);
+	glTranslatef(0.0f, -1.0f, 0.0f);
+	prisma(0.0, 1.0, 0.0);
+	glTranslatef(1.0f, -1.0f, 0.0f);
 	prisma(0.0, 1.0, 0.0);
 
     glutSwapBuffers ( );
@@ -256,13 +259,13 @@ int main ( int argc, char** argv )   // Main Function
   glutInit            (&argc, argv); // Inicializamos OpenGL
   //glutInitDisplayMode (GLUT_RGBA | GLUT_SINGLE | GLUT_DEPTH); // Display Mode (Clores RGB y alpha | Buffer Sencillo )
   glutInitDisplayMode (GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH); // Display Mode (Clores RGB y alpha | Buffer Doble )
-  glutInitWindowSize  (500, 500);	// TamaÒo de la Ventana
+  glutInitWindowSize  (500, 500);	// Tama√±o de la Ventana
   glutInitWindowPosition (0, 0);	//Posicion de la Ventana
   glutCreateWindow    ("Practica 3"); // Nombre de la Ventana
   InitGL ();						// Parametros iniciales de la aplicacion
-  glutDisplayFunc     ( display );  //Indicamos a Glut funciÛn de dibujo
-  glutReshapeFunc     ( reshape );	//Indicamos a Glut funciÛn en caso de cambio de tamano
-  glutKeyboardFunc    ( keyboard );	//Indicamos a Glut funciÛn de manejo de teclado
+  glutDisplayFunc     ( display );  //Indicamos a Glut funci√≥n de dibujo
+  glutReshapeFunc     ( reshape );	//Indicamos a Glut funci√≥n en caso de cambio de tamano
+  glutKeyboardFunc    ( keyboard );	//Indicamos a Glut funci√≥n de manejo de teclado
   glutSpecialFunc     ( arrow_keys );	//Otras
   glutMainLoop        ( );          // 
 
