@@ -2,8 +2,8 @@
 //************************************************************//
 //************************************************************//
 //************** Alumno (s): *********************************//
-//*************	Zuno S·nchez Ricardo					******//
-//*************	Pr·ctica #4								******//
+//*************	Zuno S√°nchez Ricardo					******//
+//*************	Pr√°ctica #4								******//
 //*************	Visual Studio 2017						******//
 
 #include "Main.h"
@@ -32,14 +32,14 @@ void InitGL ( void )     // Inicializamos parametros
 void prisma(void)
 {
 	GLfloat vertice [8][3] = {
-				{0.5 ,-0.5, 0.5},    //Coordenadas VÈrtice 0 V0
-				{-0.5 ,-0.5, 0.5},    //Coordenadas VÈrtice 1 V1
-				{-0.5 ,-0.5, -0.5},    //Coordenadas VÈrtice 2 V2
-				{0.5 ,-0.5, -0.5},    //Coordenadas VÈrtice 3 V3
-				{0.5 ,0.5, 0.5},    //Coordenadas VÈrtice 4 V4
-				{0.5 ,0.5, -0.5},    //Coordenadas VÈrtice 5 V5
-				{-0.5 ,0.5, -0.5},    //Coordenadas VÈrtice 6 V6
-				{-0.5 ,0.5, 0.5},    //Coordenadas VÈrtice 7 V7
+				{0.5 ,-0.5, 0.5},    //Coordenadas V√©rtice 0 V0
+				{-0.5 ,-0.5, 0.5},    //Coordenadas V√©rtice 1 V1
+				{-0.5 ,-0.5, -0.5},    //Coordenadas V√©rtice 2 V2
+				{0.5 ,-0.5, -0.5},    //Coordenadas V√©rtice 3 V3
+				{0.5 ,0.5, 0.5},    //Coordenadas V√©rtice 4 V4
+				{0.5 ,0.5, -0.5},    //Coordenadas V√©rtice 5 V5
+				{-0.5 ,0.5, -0.5},    //Coordenadas V√©rtice 6 V6
+				{-0.5 ,0.5, 0.5},    //Coordenadas V√©rtice 7 V7
 				};
 
 		glBegin(GL_POLYGON);	//Front
@@ -100,7 +100,7 @@ void display ( void )   // Creamos la funcion donde se dibuja
 		glTranslatef(transX, transY, transZ);
 		glRotatef(angY, 0, 1, 0);
 		glRotatef(angX, 1, 0, 0);
-		//Poner CÛdigo AquÌ.	
+		//Poner C√≥digo Aqu√≠.	
 		glTranslatef(-3.0, 0.0, 0.0);
 		prisma();
 		glScalef(3.0, 3.0, 3.0);
@@ -126,8 +126,8 @@ void display ( void )   // Creamos la funcion donde se dibuja
 		prisma();
 
 		glScalef(0.4, 0.4, 0.4);
-		glTranslatef(1.5, 0.0, 1.7);
-		glRotatef(0, 0, 0, 1);
+		glTranslatef(0.0, 1.2, 1.7);
+		glRotatef(-90, 0, 0, 1);
 		prisma();
   glutSwapBuffers ( );
   // Swap The Buffers
@@ -173,13 +173,13 @@ void keyboard ( unsigned char key, int x, int y )  // Create Keyboard Function
 			transX += 0.2f;
 			printf("Posicion en X: %f\n", transX);
 			break;
-		case 'q':
-		case 'Q':
+		case 'e':
+		case 'E':
 			transY += 0.2f;
 			printf("Posicion en Y: %f\n", transY);
 			break;
-		case 'e':
-		case 'E':
+		case 'q':
+		case 'Q':
 			transY -= 0.2f;
 			printf("Posicion en Y: %f\n", transY);
 			break;
@@ -221,20 +221,17 @@ int main ( int argc, char** argv )   // Main Function
   glutInitDisplayMode (GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH); // Display Mode (Clores RGB y alpha | Buffer Doble )
   screenW = glutGet(GLUT_SCREEN_WIDTH);
   screenH = glutGet(GLUT_SCREEN_HEIGHT);
-  glutInitWindowSize  (500, 500);	// TamaÒo de la Ventana
+  glutInitWindowSize  (500, 500);	// Tama√±o de la Ventana
   glutInitWindowPosition (0, 0);	//Posicion de la Ventana
   glutCreateWindow    ("Practica 4"); // Nombre de la Ventana
   printf("Resolution H: %i \n", screenW);
   printf("Resolution V: %i \n", screenH);
   InitGL ();						// Parametros iniciales de la aplicacion
-  glutDisplayFunc     ( display );  //Indicamos a Glut funciÛn de dibujo
-  glutReshapeFunc     ( reshape );	//Indicamos a Glut funciÛn en caso de cambio de tamano
-  glutKeyboardFunc    ( keyboard );	//Indicamos a Glut funciÛn de manejo de teclado
+  glutDisplayFunc     ( display );  //Indicamos a Glut funci√≥n de dibujo
+  glutReshapeFunc     ( reshape );	//Indicamos a Glut funci√≥n en caso de cambio de tamano
+  glutKeyboardFunc    ( keyboard );	//Indicamos a Glut funci√≥n de manejo de teclado
   glutSpecialFunc     ( arrow_keys );	//Otras
   glutMainLoop        ( );          // 
 
   return 0;
 }
-
-
-
