@@ -2,9 +2,20 @@
 //************************************************************//
 //************************************************************//
 //************** Alumno (s): *********************************//
-//*************	Zuno Sánchez Ricardo					******//
-//*************	Práctica #4								******//
-//*************	Visual Studio 2017						******//
+//*************	Zuno Sánchez Ricardo			******//
+//*************	Práctica #4				******//
+//*************	Visual Studio 2017			******//
+//****  Instrucciones: Tecla A traslada a la izquierda  *******//
+//****  Tecla D traslada a la derecha  *******//
+//****  Tecla W traslada al frente  *******//
+//****  Tecla S traslada atrás  *******//
+//****  Tecla Q traslada abajo  *******//
+//****  Tecla E traslada arriba  *******//
+//****  Tecla W traslada al frente  *******//
+//****  Tecla flecha arriba rotación positiva del eje x *******//
+//****  Tecla flecha abajo rotación negativa del eje x *******//
+//****  Tecla flecha izquierda rotación positiva del eje y *******//
+//****  Tecla flecha derecha rotación negativa del eje y *******//
 
 #include "Main.h"
 
