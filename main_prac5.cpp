@@ -1,9 +1,16 @@
 //Semestre 2017 - 2
 //************************************************************//
 //************************************************************//
-//************** Alumno (s): *********************************//
-//*************											******//
-//*************											******//
+//************** Alumno (s): Zuno S√°nchez Ricardo *********************************//
+//*************	 Pr√°ctica #5										******//
+//*************	 Visual Studio 2017										******//
+//***Instrucciones: tecla r, R gira el codo  *****//
+//***tecla t, T gira la mu√±eca  *****//
+//***tecla y, Y gira el dedo pulgar  *****//
+//***tecla u, U gira el dedo indice  *****//
+//***tecla i, I gira el dedo medio  *****//
+//***tecla o, O gira el dedo anular  *****//
+//***tecla p, P gira el dedo me√±ique*****//
 //************************************************************//
 #include "Main.h"
 
@@ -17,6 +24,9 @@ float angCodo = 0.0;
 float angMu = 0.0;
 float angPu = 0.0;
 float angIn = 0.0;
+float angMed = 0.0;
+float angAn = 0.0;
+float angMen = 0.0;
 
 GLfloat Position[]= { 0.0f, 3.0f, 0.0f, 1.0f };			// Light Position
 GLfloat Position2[]= { 0.0f, 0.0f, -5.0f, 1.0f };			// Light Position
@@ -25,7 +35,7 @@ void InitGL ( void )     // Inicializamos parametros
 {
 
 	glShadeModel(GL_SMOOTH);							// Habilitamos Smooth Shading
-	glClearColor(1.0f, 1.0f, 1.0f, 0.0f);				// Negro de fondo
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);				// Negro de fondo
 	glClearDepth(1.0f);									// Configuramos Depth Buffer
 	glEnable(GL_DEPTH_TEST);							// Habilitamos Depth Testing
 
@@ -44,14 +54,14 @@ void InitGL ( void )     // Inicializamos parametros
 void prisma(void)
 {
 	GLfloat vertice [8][3] = {
-				{0.5 ,-0.5, 0.5},    //Coordenadas VÈrtice 0 V0
-				{-0.5 ,-0.5, 0.5},    //Coordenadas VÈrtice 1 V1
-				{-0.5 ,-0.5, -0.5},    //Coordenadas VÈrtice 2 V2
-				{0.5 ,-0.5, -0.5},    //Coordenadas VÈrtice 3 V3
-				{0.5 ,0.5, 0.5},    //Coordenadas VÈrtice 4 V4
-				{0.5 ,0.5, -0.5},    //Coordenadas VÈrtice 5 V5
-				{-0.5 ,0.5, -0.5},    //Coordenadas VÈrtice 6 V6
-				{-0.5 ,0.5, 0.5},    //Coordenadas VÈrtice 7 V7
+				{0.5 ,-0.5, 0.5},    //Coordenadas V√©rtice 0 V0
+				{-0.5 ,-0.5, 0.5},    //Coordenadas V√©rtice 1 V1
+				{-0.5 ,-0.5, -0.5},    //Coordenadas V√©rtice 2 V2
+				{0.5 ,-0.5, -0.5},    //Coordenadas V√©rtice 3 V3
+				{0.5 ,0.5, 0.5},    //Coordenadas V√©rtice 4 V4
+				{0.5 ,0.5, -0.5},    //Coordenadas V√©rtice 5 V5
+				{-0.5 ,0.5, -0.5},    //Coordenadas V√©rtice 6 V6
+				{-0.5 ,0.5, 0.5},    //Coordenadas V√©rtice 7 V7
 				};
 
 		glBegin(GL_POLYGON);	//Front
@@ -112,7 +122,7 @@ void display(void)   // Creamos la funcion donde se dibuja
 	glTranslatef(transX, 0.0f, transZ);
 	glRotatef(angleY, 0.0, 1.0, 0.0);
 	glRotatef(angleX, 1.0, 0.0, 0.0);
-	//Poner CÛdigo AquÌ.
+	//Poner C√≥digo Aqu√≠.
 	glPushMatrix();
 	//brazo
 		glPushMatrix();
@@ -140,7 +150,7 @@ void display(void)   // Creamos la funcion donde se dibuja
 				prisma();
 			glPopMatrix();
 			glTranslatef(1,0,0);
-			glRotatef(angMu, 0, 1, 0); //articulacion codo
+			glRotatef(angMu, 0, 1, 0); //articulacion mu√±eca
 			glTranslatef(0.5, 0, 0);
 
 			//Palma
@@ -180,7 +190,7 @@ void display(void)   // Creamos la funcion donde se dibuja
 				//falange 1
 				glPushMatrix();
 					glColor3f(0.9, 0.7, 0.1);
-					glScalef(0.3 , 0.1, 0.2);
+					glScalef(0.3 , 0.12, 0.2);
 					prisma();
 				glPopMatrix();
 				glTranslatef(0.15, 0, 0);
@@ -189,7 +199,7 @@ void display(void)   // Creamos la funcion donde se dibuja
 				//falange 2
 				glPushMatrix();
 					glColor3f(0.54, 0.214, 0.172);
-					glScalef(0.3, 0.1, 0.2);
+					glScalef(0.3, 0.12, 0.2);
 					prisma();
 				glPopMatrix();
 				glTranslatef(0.15, 0, 0);
@@ -198,30 +208,104 @@ void display(void)   // Creamos la funcion donde se dibuja
 				//falange 3
 				glPushMatrix();
 					glColor3f(0.481, 0.985, 0.15);
-					glScalef(0.3, 0.1, 0.2);
+					glScalef(0.3, 0.12, 0.2);
+					prisma();
+				glPopMatrix();
+			glPopMatrix();
+
+			//Medio
+			glPushMatrix();
+				glTranslatef(0.5, 0.22, 0);
+				glRotatef(angMed, 0, 1, 0);
+				glTranslatef(0.2, 0.0, 0);
+				//falange 1
+				glPushMatrix();
+					glColor3f(1, 1, 1);
+					glScalef(0.4, 0.12, 0.2);
+					prisma();
+				glPopMatrix();
+				glTranslatef(0.2, 0.0, 0);
+				glRotatef(angMed*0.3f, 0, 1, 0);
+				glTranslatef(0.2, 0.0, 0);
+				//falange 2
+				glPushMatrix();
+					glColor3f(0, 0, 1);
+					glScalef(0.4, 0.12, 0.2);
+					prisma();
+				glPopMatrix();
+				glTranslatef(0.2, 0.0, 0);
+				glRotatef(angMed*0.6f, 0, 1, 0);
+				glTranslatef(0.2, 0.0, 0);
+				//falange 3
+				glPushMatrix();
+					glColor3f(1.0, 0.509, 0.0);
+					glScalef(0.4, 0.12, 0.2);
 					prisma();
 				glPopMatrix();
 			glPopMatrix();
 
 			//Anular
 			glPushMatrix();
-				glTranslatef(0.5, 0.3, 0);
-				glTranslatef(0.2, 0.0, 0);
+				glTranslatef(0.5, -0.02, 0);
+				glRotatef(angAn, 0, 1, 0);
+				glTranslatef(0.15, 0, 0);
 				//falange 1
 				glPushMatrix();
-					glColor3f(1, 1, 1);
-					glScalef(0.4, 0.1, 0.2);
+					glColor3f(0.349, 0.047, 0.909);
+					glScalef(0.3, 0.12, 0.2);
 					prisma();
 				glPopMatrix();
-				glTranslatef(0.2, 0.0, 0);
-				glTranslatef(0.2, 0.0, 0);
+				glTranslatef(0.15, 0, 0);
+				glRotatef(angAn*0.3f, 0, 1, 0);
+				glTranslatef(0.15, 0, 0);
 				//falange 2
 				glPushMatrix();
-					glColor3f(0.485, 0.96, 0.5);
-					glScalef(0.4, 0.1, 0.2);
+					glColor3f(1.0, 0.397, 0.0);
+					glScalef(0.3, 0.12, 0.2);
+					prisma();
+				glPopMatrix();
+				glTranslatef(0.15, 0, 0);
+				glRotatef(angAn*0.6f, 0, 1, 0);
+				glTranslatef(0.15, 0, 0);
+				//falange 3
+				glPushMatrix();
+					glColor3f(1.0, 0.0, 0.462);
+					glScalef(0.3, 0.12, 0.2);
 					prisma();
 				glPopMatrix();
 			glPopMatrix();
+
+			//Me√±ique
+			glPushMatrix();
+				glTranslatef(0.5, -0.26, 0);
+				glRotatef(angMen, 0, 1, 0);
+				glTranslatef(0.05, 0, 0);
+				//falange 1
+				glPushMatrix();
+					glColor3f(0.525, 0.772, 0.172);
+					glScalef(0.1, 0.12, 0.2);
+					prisma();
+				glPopMatrix();
+				glTranslatef(0.05, 0, 0);
+				glRotatef(angMen*0.3f, 0, 1, 0);
+				glTranslatef(0.05, 0, 0);
+				//falange 2
+				glPushMatrix();
+					glColor3f(0.698, 0, 0.121);
+					glScalef(0.1, 0.12, 0.2);
+					prisma();
+				glPopMatrix();
+				glTranslatef(0.05, 0, 0);
+				glRotatef(angMen*0.6f, 0, 1, 0);
+				glTranslatef(0.05, 0, 0);
+				//Falange 3
+				glPushMatrix();
+					glColor3f(0.054, 0.556, 0.729);
+					glScalef(0.1, 0.12, 0.2);
+					prisma();
+				glPopMatrix();
+			glPopMatrix();
+
 		glPopMatrix();
 	glPopMatrix();
 
@@ -262,11 +346,35 @@ void reshape ( int width , int height )   // Creamos funcion Reshape
 void keyboard ( unsigned char key, int x, int y )  // Create Keyboard Function
 {
 	switch (key) {
+		case 'p':
+			if (angMen <= 90)
+				angMen += 0.8f;
+			break;	
+		case 'P':
+			if (angMen >= 0)
+				angMen -= 0.8f;
+			break;
+		case 'o':
+			if (angAn <= 90)
+				angAn += 0.8f;
+			break;
+		case 'O':
+			if (angAn >= 0)
+				angAn -= 0.8f;
+			break;
 		case 'i':
+			if (angMed <= 90)
+				angMed += 0.8f;
+			break;
+		case 'I':
+			if (angMed >= 0)
+				angMed -= 0.8f;
+			break;
+		case 'u':
 			if (angIn <= 90)
 				angIn += 0.8f;
 			break;
-		case 'I':
+		case 'U':
 			if (angIn >= 0)
 				angIn -= 0.8f;
 			break;
@@ -283,7 +391,7 @@ void keyboard ( unsigned char key, int x, int y )  // Create Keyboard Function
 				angMu += 0.8f;
 			break;
 		case 'T':
-			if (angMu >= 30)
+			if (angMu >= 0)
 				angMu -= 0.8f;
 			break;
 		case 'r':
@@ -347,20 +455,19 @@ int main ( int argc, char** argv )   // Main Function
   glutInitDisplayMode (GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH); // Display Mode (Clores RGB y alpha | Buffer Doble )
   screenW = glutGet(GLUT_SCREEN_WIDTH);
   screenH = glutGet(GLUT_SCREEN_HEIGHT);
-  glutInitWindowSize  (500, 500);	// TamaÒo de la Ventana
+  glutInitWindowSize  (500, 500);	// Tama√±o de la Ventana
   glutInitWindowPosition (0, 0);	//Posicion de la Ventana
   glutCreateWindow    ("Practica 5"); // Nombre de la Ventana
   printf("Resolution H: %i \n", screenW);
   printf("Resolution V: %i \n", screenH);
   InitGL ();						// Parametros iniciales de la aplicacion
-  glutDisplayFunc     ( display );  //Indicamos a Glut funciÛn de dibujo
-  glutReshapeFunc     ( reshape );	//Indicamos a Glut funciÛn en caso de cambio de tamano
-  glutKeyboardFunc    ( keyboard );	//Indicamos a Glut funciÛn de manejo de teclado
+  glutDisplayFunc     ( display );  //Indicamos a Glut funci√≥n de dibujo
+  glutReshapeFunc     ( reshape );	//Indicamos a Glut funci√≥n en caso de cambio de tamano
+  glutKeyboardFunc    ( keyboard );	//Indicamos a Glut funci√≥n de manejo de teclado
   glutSpecialFunc     ( arrow_keys );	//Otras
   glutMainLoop        ( );          // 
 
   return 0;
 }
-
 
 
