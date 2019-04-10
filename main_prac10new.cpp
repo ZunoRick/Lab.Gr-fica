@@ -1,8 +1,8 @@
 //Semestre 2017 - 2
 //************************************************************//
 //************************************************************//
-//************** Alumno (s): *********************************//
-//*************											******//
+//************** Alumno (s): Zuno Sánchez Ricardo*********************************//
+//*************	Práctica 10										******//
 //*************											******//
 //************************************************************//
 //************************************************************//
@@ -56,6 +56,8 @@ CModel llanta;
 //Animación del coche
 float movKit = 0.0;
 bool g_fanimacion = false;
+bool adelante = false;
+float movLlanta = 0.0;
 
 			
 void InitGL ( GLvoid )     // Inicializamos parametros
@@ -161,12 +163,36 @@ void display ( void )   // Creamos la funcion donde se dibuja
 				glRotatef(90, 0, 1, 0);
 				glScalef(0.3, 0.3, 0.3);
 
-				glTranslatef(0, 4, movKit);
+				glTranslatef(0, 3, movKit);
 				//Pongo aquí la carroceria del carro
 				kit.GLrender(NULL,_SHADED,1.0);  //_WIRED O _POINTS
-		
-				llanta.GLrender(NULL,_SHADED,1.0);
 				
+				glTranslatef(6, 0, 7.5);
+				glPushMatrix();
+					glScalef(0.6, 0.9, 1.0);
+					glRotatef(movLlanta, 1, 0, 0);
+					llanta.GLrender(NULL,_SHADED,1.0);
+				glPopMatrix();
+				glTranslatef(0, 0, -17);
+				glPushMatrix();
+					glScalef(0.6, 0.9, 1.0);
+					glRotatef(movLlanta, 1, 0, 0);
+					llanta.GLrender(NULL, _SHADED, 1.0);
+				glPopMatrix();
+
+				glTranslatef(-12, 0, 0);
+				glRotatef(180.0, 0, 0, 1);
+				glPushMatrix();
+					glScalef(0.6, 0.9, 1.0);
+					glRotatef(-movLlanta, 1, 0, 0);
+					llanta.GLrender(NULL, _SHADED, 1.0);
+				glPopMatrix();
+				glTranslatef(0, 0, 17);
+				glPushMatrix();
+					glScalef(0.6, 0.9, 1.0);
+					glRotatef(-movLlanta, 1, 0, 0);
+					llanta.GLrender(NULL, _SHADED, 1.0);
+				glPopMatrix();
 			glPopMatrix();
 
 			//Para que el comando glColor funcione con iluminacion
@@ -249,7 +275,7 @@ void display ( void )   // Creamos la funcion donde se dibuja
 }
 
 void animacion(){
-	bool sentido = false;
+
 	fig3.text_izq-= 0.001;
 	fig3.text_der-= 0.001;
 	if(fig3.text_izq<-1)
@@ -261,11 +287,22 @@ void animacion(){
 	if(g_fanimacion)
 	{
 		printf("%f\n", movKit);
-		if (movKit <= 129.0)
-			movKit += 1.0;
-
-		else if (movKit == 130.0)
-			movKit -= 1.0;
+		if (adelante) {
+			if (movKit < 130.0) {
+				movKit += 0.5;
+				movLlanta += 30.0;
+			}
+			if (movKit == 130.0)
+				adelante = false;
+		}
+		else {
+			if (movKit > -130.0) {
+				movKit -= 0.5;
+				movLlanta -= 30.0;
+			}
+			if (movKit == -130.0)
+				adelante = true;
+		}
 	}
 
 	glutPostRedisplay();
@@ -312,6 +349,10 @@ void keyboard ( unsigned char key, int x, int y )  // Create Keyboard Function
 		case 'd':
 		case 'D':
 			objCamera.Strafe_Camera( CAMERASPEED+0.4 );
+			break;
+		case 'n':
+		case 'N':
+			movLlanta -= 30.0;
 			break;
 
 		case ' ':		//Poner algo en movimiento
